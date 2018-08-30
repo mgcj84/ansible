@@ -1,0 +1,8 @@
+- name: Instalando pacotes apache, mariadb, php no Debian
+  package:
+   name:
+    - mariadb-server
+    - php
+    - apache2
+   state: present
+   update_cache: yes				   

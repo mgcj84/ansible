@@ -1,0 +1,32 @@
+---
+- name: Exec01
+  hosts: all
+  tasks:
+   - name: Instalando os pacotes
+     package:
+      name:
+       - cowsay
+       - vim
+       - htop
+       - sl
+      state: present
+
+   - name: Adicionando usuarios
+     user:
+      name: "{{item}}" 
+      shell: '/bin/bash'
+      password: '$1$5OLTtqZG$zieqcNfY2taSpZYQY.XHH0'
+     with_items:
+       - devops
+       - developer
+       - marcosjustino
+
+- name: Instalando o epel-release
+  hosts: "{{host}}"
+  vars: 
+   - host: automation
+  tasks:
+   - name: Instalando o epel-release
+     package:
+      name: epel-release
+      state: present

@@ -1,0 +1,12 @@
+- name: Adiciona Repositorio - puppet - Debian
+  apt:
+   deb: https://apt.puppetlabs.com/puppet5-release-xenial.deb
+   update_cache: yes
+   state: present
+  when: ansible_os_family == "Debian"
+
+- name: Adiciona Repositorio - puppet - CentOS 
+  yum:
+   name: https://yum.puppet.com/puppet5/puppet5-release-el-7.noarch.rpm
+   state: present
+  when: ansible_os_family == "RedHat"

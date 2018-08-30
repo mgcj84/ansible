@@ -1,0 +1,12 @@
+- name: Instalando os pacotes principais
+  package:
+   name:
+    - figlet
+    - vim
+    - joe
+    - sysstat
+    - htop
+    - sl
+    - cowsay
+   state: present
+   update_cache: yes

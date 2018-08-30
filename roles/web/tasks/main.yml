@@ -1,0 +1,12 @@
+---
+# tasks file for web
+- name: Instalando pacotes no Debian
+  include: package_debian.yaml
+  when: ansible_os_family == "Debian"
+
+- name: Instalando pacotes no Redhat
+  include: package_redhat.yaml
+  when: ansible_os_family == "RedHat"
+
+- name: Copiando o arquivo index
+  include: index.yaml

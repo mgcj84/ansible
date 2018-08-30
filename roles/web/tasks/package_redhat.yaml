@@ -1,0 +1,9 @@
+- name: Instalando pacotes apache, mariadb, php no Red Hat
+  package:
+   name:
+    - mariadb-server
+    - php
+    - httpd
+   state: present			   
+  notify:
+    - Configurando o firewalld

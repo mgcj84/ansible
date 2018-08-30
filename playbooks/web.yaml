@@ -1,0 +1,6 @@
+- name: Exercicio roles A
+  hosts: "{{grupo}}"
+  vars:
+   - grupo: all
+  roles:
+   - web

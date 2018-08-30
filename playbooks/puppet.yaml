@@ -1,0 +1,6 @@
+- name: Instalar puppet
+  hosts: "{{grupo}}"
+  vars:
+   - grupo: all
+  roles:
+   - puppet

@@ -1,0 +1,20 @@
+---
+- name: minha primeira playbook
+  hosts: all
+  tasks: 
+   - name: Instalando o sl 
+     package: 
+      name: sl
+      state: present
+
+   - name: adicionando um usuario
+     user:
+      name: devops
+      comment: Usuario criado por Ansible
+      shell: '/bin/bash'
+      password: '$1$5OLTtqZG$zieqcNfY2taSpZYQY.XHH0'
+
+   - name: copiando o arquivo de configuracao
+     copy:
+      src: devops
+      dest: /tmp/devops.backup

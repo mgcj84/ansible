@@ -1,0 +1,6 @@
+<h1>
+Nome da maquina: {{ansible_hostname}}
+<br>
+distro da maquina: {{ansible_distribution_release}}
+<br>
+ip da maquina: {{ansible_enp0s3.ipv4.address}} --  {{ansible_enp0s8.ipv4.address}}
