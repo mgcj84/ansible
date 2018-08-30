@@ -10,8 +10,8 @@
       name:
        - java-1.8.0
        - rundeck
-       - ansible-2.6.3
-      state: present
+       - ansible
+      state: latest
       update_cache: yes
 
    - name: copiando o diretorio keys
