@@ -1,0 +1,29 @@
+- name: Instalando Rundeck
+  hosts: automation
+  tasks:
+   - name: Atualizando repositorio
+     yum:
+      name: https://repo.rundeck.org/latest.rpm
+
+   - name: Instalando pacotes
+     package:
+      name:
+       - java-1.8.0
+       - rundeck
+       - ansible-2.6.3
+      state: present
+      update_cache: yes
+
+   - name: copiando o diretorio keys
+     copy:
+      src: "{{item.src}}"
+      dest: "{{item.dest}}"
+     with_items:
+      - { src: /etc/keys, dest: /etc/ }
+      - { src: /etc/ansible/hosts, dest: /etc/ansible/ }
+      - { src: /etc/ansible/ansible.cfg, dest: /etc/ansible }
+
+   - name: Iniciar servico rundeck
+     service:
+      name: rundeckd
+      state: stopped
