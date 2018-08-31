@@ -1,0 +1,8 @@
+- name: Instalando nginx
+  hosts: docker
+  tasks:
+   - name: Instalar o nginx
+     package:
+      name: nginx
+      state: latest
+      update_cache: yes

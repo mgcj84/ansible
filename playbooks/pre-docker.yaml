@@ -1,0 +1,4 @@
+- name: executando a role de pre
+  hosts: docker
+  roles:
+   - pre-docker

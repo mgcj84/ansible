@@ -1,0 +1,20 @@
+- name: Preparando o cenario para o docker
+  hosts: docker
+  tasks:
+   - name: Instalando os pacotes
+     package: 
+      name: 
+       - apt-transport-https
+       - ca-certificates
+       - curl
+       - gnupg2
+       - python-pip
+       - docker-ce
+       - nginx
+      state: present
+
+   - name: Instalando o docker-py para gerenciar docker com ansible
+     pip:
+      name: 
+       - docker-py
+      state: present

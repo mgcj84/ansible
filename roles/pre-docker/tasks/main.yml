@@ -1,0 +1,27 @@
+---
+# tasks file for pre-docker
+- name: Instalando os pacotes
+  package:
+   name:
+     - apt-transport-https
+     - ca-certificates
+     - curl
+     - gnupg2
+     - python-pip
+     - docker-ce
+     - nginx
+   state: present
+
+- name: Instalando o docker-py para gerenciar docker com ansible
+  pip:
+   name:
+    - docker-py
+   state: present
+
+- name: Garantindo os servicos rodando - nginx e docker
+  service:
+   name: "{{item}}"
+   state: started
+  with_items:
+   - nginx
+   - docker

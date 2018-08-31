@@ -1,0 +1,15 @@
+- name: Criando o cenario de micro servicoes
+  hosts: docker
+  tasks:
+   - name: Criando o container
+     docker_container:
+      name: rabbit_jorge
+      image: httpd
+      state: started
+      volumes:
+       - /index:/usr/local/apache2/htdocs
+
+   - name: download do repositorio
+     git:
+      repo: http://devops.dexter.com.br/marcosjustino/docker.git
+      dest: /index/

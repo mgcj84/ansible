@@ -1,0 +1,22 @@
+- name: Instalando Jenkins
+  hosts: automation
+  tasks:
+#   - name: Atualizando repositorio
+#     yum_repository:
+#      name: jenkins
+#      description: Repo_Jenkins
+#      baseurl: http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+   - name: install dependencias
+     yum:
+      name: wget
+      state: present
+
+   - name: Adicionando repo e chave
+     shell: "wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo"
+     shell: "rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key"
+
+   - name: Instalando pacotes
+     package:
+      name: jenkins 
+      state: latest
+      update_cache: yes
